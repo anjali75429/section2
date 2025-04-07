@@ -13,6 +13,16 @@ const SignupSchema = Yup.object().shape({
         .max(50, 'Too Long!')
         .required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
+    
+    password : Yup.string().required('no password')
+    .min(8, 'Minimum 8 characters')
+    .matches(/[a-z]/, 'Lowercase letter is required')
+    .matches(/[A-z]/, 'Uppercase letter is required')
+    .matches(/[0-9]/, 'Number is required')
+    .matches(/\W/, 'Special character is required')
+    confirmPassword: Yup.string().required('confirm password is required')
+    .oneOf([Yup.ref('password'), null], 'password must watch')
+
 });
 
 const Signup = () => {
