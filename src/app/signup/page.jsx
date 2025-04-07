@@ -19,7 +19,8 @@ const SignupSchema = Yup.object().shape({
     .matches(/[a-z]/, 'Lowercase letter is required')
     .matches(/[A-z]/, 'Uppercase letter is required')
     .matches(/[0-9]/, 'Number is required')
-    .matches(/\W/, 'Special character is required')
+    .matches(/\W/, 'Special character is required'),
+    
     confirmPassword: Yup.string().required('confirm password is required')
     .oneOf([Yup.ref('password'), null], 'password must watch')
 
